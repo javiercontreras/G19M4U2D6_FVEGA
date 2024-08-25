@@ -7,6 +7,7 @@
 #realizar ventas
 from tienda import Restaurant, Supermercado, Farmacia
 from producto import Producto
+import art
 b_listar_productos = True
 b_vender_productos = True
 
@@ -18,10 +19,13 @@ tipo = int(input("\nEliga el tipo de tienda:\n"
 nombre_tienda= str(input("\nIngrese el nombre de su tienda:\n"))
 costo_delivery = int(input("\nIngrese el costo del delivery:\n"))
 if tipo == 1:
+    print(art.restaurant)
     tienda = Restaurant(nombre_tienda, costo_delivery)
 elif tipo == 2:
+    print(art.farmacia)
     tienda = Farmacia(nombre_tienda, costo_delivery)
 elif tipo == 3:
+    print(art.supermercado)
     tienda = Supermercado(nombre_tienda, costo_delivery)
 
 while b_listar_productos:
