@@ -25,9 +25,23 @@ class Producto():
     def price(self):
         return self.__price
 
+    def __eq__(self,other):
+        return self.name.lower() == other.name.lower()
+    
+    def __iadd__(self, other):
+        if self == other:
+            self.stock += other.stock
+        return self
+    
+    def __isub__(self, other):
+        if self == other:
+            self.stock -= other.stock
+        return self
+    
+    
     def validate_price(self, new_price):
         if new_price >= 0:
-            self.__price = new_price
+            return new_price
         else:
             raise ValueError("Price must be non-negative.")
 
@@ -35,12 +49,14 @@ class Producto():
         if new_stock>= 0:
             return new_stock
         else:
-            raise ValueError("Price must be non-negative.")
+            return 0
+        
+    
 
 if __name__ == '__main__':
     nombre= str(input("Ingrese el nombre del producto       : "))
     precio = float(input("Ingrese el precio del producto        :"))
     stock = int(input("Ingrese el stock del producto       :"))
-    p = Producto(nombre, precio)
- 
-    print(p.stock)
+    p = Producto(nombre, precio, stock)
+    
+    
